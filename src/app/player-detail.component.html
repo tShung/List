@@ -1,0 +1,9 @@
+<div *ngIf="player">
+    <h2>{{player.name}}'s details!</h2>
+    <div><label>name: </label>
+        <input [(ngModel)] = "player.name" placeholder=
+        "Enter a player">
+    </div>
+    <button (click)="goBack()">Back</button>
+    <button (click)="save()">Save</button>
+</div>
