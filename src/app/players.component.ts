@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Player} from './player';
 import {PlayerService } from './player.service';
 import { OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,13 @@ export class PlayersComponent  implements OnInit {
   players: Player[];
   selectedPlayer: Player;
   
-  constructor(private playerService: PlayerService) { }
+  constructor(private router: Router, private playerService: PlayerService) { }
+
+
+  gotoDetail(): void {
+    this.router.navigate(['detail',this.selectedPlayer.id]);
+    }
+
 
   getPlayers(): void {
     this.playerService.getPlayers().then(players=>
@@ -27,7 +34,7 @@ export class PlayersComponent  implements OnInit {
     this.getPlayers();
   }
 
-  onselect(player:Player):void {
+  onSelect(player:Player):void {
     this.selectedPlayer = player;
   }
 
@@ -40,7 +47,7 @@ export class PlayersComponent  implements OnInit {
 
   delete(player: Player): void {
     this.playerService.delete(player.id).then(() => {
-      this.players.filter(h => h !== player);
+      this.players = this.players.filter(h => h !== player);
       if (this.selectedPlayer === player) {
         this.selectedPlayer = null;}
     });

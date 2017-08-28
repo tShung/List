@@ -9,9 +9,8 @@
     </button>
 </div>
 <ul class="players">
-  <li *ngFor="let player of players"
-  [class.selected]="player === selectedPlayer"
-  (click)="onselect(player)">
+  <li *ngFor="let player of players"  (click)="onSelect(player)"
+  [class.selected]="player === selectedPlayer">
     <span class="badge">{{player.id}}</span>
     <span>{{player.name}}</span>
     <button class="delete"
