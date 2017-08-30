@@ -1,6 +1,6 @@
 <div id="search-component">
     <h4>Player Search</h4>
-    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value) placeholder = "Search" />
     <div>
       <div *ngFor="let player of players | async"
            (click)="gotoDetail(player)" class="search-result" >
